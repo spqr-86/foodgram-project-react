@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Удалить рецепт{% endblock %}
+{% load static %}
+{% load recipe_filters %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'pages/single.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+{% endblock %}
+
+

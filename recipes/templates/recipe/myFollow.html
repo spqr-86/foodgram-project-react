@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Мои подписки{% endblock %}
+{% load static %}
+{% load recipe_filters %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'pages/myFollow.css'%}">
+{% endblock %}
+
+
+{% block header %}
+  <h1 class="main__title">Мои подписки</h1>
+{% endblock %}
+
+
+{% block content %}
+  <div class="card-list">
+    {% for author in page_obj %}
+      <div class="card-user" data-author="{{ author.id }}">
+        <div class="card-user__header">
+            <h2 class="card-user__title">{{ author.first_name }}</h2>
+        </div>
+        <div class="card-user__body">
+          <ul class="card-user__items">
+            {% if author.recipes.all.count > 3 %}
+              {% for recipe in author.recipes.all|slice:'3' %}
+                {% include 'my_follow_recipe_item.html' with recipe=recipe %}
+              {% endfor %}
+              <li class="card-user__item">
+                <a href="{% url 'author' author.username %}" class="card-user__link link">Еще {{ author.recipes.all.count|add:'-3' }} рецептов...</a>
+              </li>
+            {% else %}
+              {% for recipe in author.recipes.all %}
+                {% include 'recipe/include/my_follow_recipe_item.html' with recipe=recipe %}
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+        <div class="card-user__footer">
+            <button class="button button_style_light-blue button_size_auto"
+              name="subscribe" data-out="true">Отписаться
+            </button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% if page_obj.has_other_pages %}
+    {% include 'paginator.html' %}
+  {% endif %}
+{% endblock %}
+
+
+{% block js %}
+  <script src="{% static 'js/config/config.js' %}"></script>
+  <script src="{% static 'js/components/MainCards.js' %}"></script>
+  <script src="{% static 'js/components/Subscribe.js' %}"></script>
+  <script src="{% static 'js/components/MyFollow.js' %}"></script>
+  <script src="{% static 'js/components/Header.js' %}"></script>
+  <script src="{% static 'js/api/Api.js' %}"></script>
+  <script src="{% static 'myFollow.js' %}"></script>
+{% endblock %}
