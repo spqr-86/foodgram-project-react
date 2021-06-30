@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import Recipe, RecipeIngredient, Ingredient
+from .models import Ingredient, Recipe, RecipeIngredient
 
 
 class RecipeForm(forms.ModelForm):
     ingredients = forms.ModelMultipleChoiceField(
-        queryset=Ingredient.objects.all(), to_field_name="name"
+        queryset=Ingredient.objects.all(), to_field_name='name'
     )
 
     class Meta:
@@ -29,7 +29,7 @@ class RecipeForm(forms.ModelForm):
             data = data.copy()
             ingredients = self.get_ingredients(data)
             for item in ingredients:
-                data.update({"ingredients": item})
+                data.update({'ingredients': item})
             self.amount = self.get_amount(data)
 
         super().__init__(data=data, *args, **kwargs)
@@ -48,7 +48,7 @@ class RecipeForm(forms.ModelForm):
                     ingredient=ingredient,
                     amount=ingredients_amount[ingredient.name],
                 )
-                for ingredient in self.cleaned_data["ingredients"]
+                for ingredient in self.cleaned_data['ingredients']
             ],
             bulk=False,
         )
@@ -60,7 +60,7 @@ class RecipeForm(forms.ModelForm):
         ingredients = [
             query_data[key]
             for key in query_data.keys()
-            if key.startswith("nameIngredient")
+            if key.startswith('nameIngredient')
         ]
         return ingredients
 
@@ -68,9 +68,9 @@ class RecipeForm(forms.ModelForm):
         """Возвращает словарь ингредиент:количество."""
         result = {}
         for key in q_dict.keys():
-            if key.startswith("nameIngredient"):
-                n = key.split("_")[1]
-                result[q_dict["nameIngredient_" + n]] = q_dict[
-                    "valueIngredient_" + n
+            if key.startswith('nameIngredient'):
+                n = key.split('_')[1]
+                result[q_dict['nameIngredient_' + n]] = q_dict[
+                    'valueIngredient_' + n
                 ]
         return result

@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class UserRole(models.TextChoices):
@@ -20,8 +20,8 @@ class CustomUser(AbstractUser):
 
     class Meta:
         ordering = ['email']
-        verbose_name = "пользователь"
-        verbose_name_plural = "пользователи"
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'
 
     def __str__(self):
         return self.first_name

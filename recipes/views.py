@@ -2,14 +2,13 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import (ListView, DetailView, CreateView, UpdateView,
-                                  DeleteView)
-
-from .models import Recipe, Tag
-from .forms import RecipeForm
-
-from .mixins import SectionMixin, TagMixin
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 from shopping_list.views import ShopListMixin
+
+from .forms import RecipeForm
+from .mixins import SectionMixin, TagMixin
+from .models import Recipe
 
 User = get_user_model()
 
@@ -22,9 +21,7 @@ class IndexView(ShopListMixin, SectionMixin, TagMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        tags = self.request.GET.getlist("tags")
-        all_tags = [tag.slug for tag in self.all_tags]
-        tags = list(set(all_tags) - set(tags))
+        tags = self.get_tags()
         return queryset.filter(tags__slug__in=tags).distinct()
 
 
@@ -75,11 +72,8 @@ class AuthorView(ShopListMixin, SectionMixin, TagMixin, ListView):
 
     def get_queryset(self):
         author = get_object_or_404(User, username=self.kwargs.get('author'))
-        tags = self.request.GET.getlist("tags")
-        all_tags = [tag.slug for tag in self.all_tags]
-        tags = list(set(all_tags) - set(tags))
-        if tags:
-            return author.recipes.all().filter(tags__slug__in=tags).distinct()
+        tags = self.get_tags()
+        return author.recipes.all().filter(tags__slug__in=tags).distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -96,7 +90,5 @@ class FavoriteListView(ShopListMixin, SectionMixin, TagMixin, ListView):
 
     def get_queryset(self):
         user = self.request.user
-        tags = self.request.GET.getlist("tags")
-        all_tags = [tag.slug for tag in self.all_tags]
-        tags = list(set(all_tags) - set(tags))
+        tags = self.get_tags()
         return Recipe.objects.filter(favorite__user=user, tags__slug__in=tags)

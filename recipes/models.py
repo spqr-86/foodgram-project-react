@@ -66,7 +66,7 @@ class Recipe(models.Model):
     )
     tags = models.ManyToManyField(
         Tag,
-        verbose_name='тег',
+        verbose_name='теги',
     )
     cooking_time = models.PositiveSmallIntegerField(
         verbose_name='Время приготовления в минутах',
@@ -86,7 +86,8 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='ingredients_amounts'
+        related_name='ingredients_amounts',
+        verbose_name='рецепт',
     )
     ingredient = models.ForeignKey(
         Ingredient,
@@ -97,13 +98,16 @@ class RecipeIngredient(models.Model):
         max_digits=6,
         decimal_places=1,
         validators=[MinValueValidator(1)],
+        verbose_name='количество',
     )
 
     class Meta:
+        verbose_name = 'рецепт-ингредиент'
+        verbose_name_plural = 'рецепты-ингредиенты'
         constraints = [
             models.UniqueConstraint(
-                fields=["recipe", "ingredient"],
-                name="unique_recipe_ingredient",
+                fields=['recipe', 'ingredient'],
+                name='unique_recipe_ingredient',
             )
         ]
 
@@ -131,12 +135,12 @@ class Follow(models.Model):
     )
 
     class Meta:
-        verbose_name = "подписка"
-        verbose_name_plural = "подписки"
+        verbose_name = 'подписка'
+        verbose_name_plural = 'подписки'
         ordering = ('author',)
         constraints = [
             UniqueConstraint(
-                fields=["user", "author"],
+                fields=['user', 'author'],
                 name='unique_follow')]
 
 
@@ -157,6 +161,6 @@ class Favorite(models.Model):
         return self.recipe.name
 
     class Meta:
-        verbose_name = "рецепт"
-        verbose_name_plural = "избранное"
+        verbose_name = 'рецепт'
+        verbose_name_plural = 'избранное'
         ordering = ('user', )

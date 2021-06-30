@@ -1,10 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.contrib.flatpages import views
-
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib import admin
+from django.contrib.flatpages import views
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,6 +13,8 @@ urlpatterns = [
          {'url': '/about-author/'}, name='author'),
     path('about-spec/', views.flatpage,
          {'url': '/about-spec/'}, name='spec'),
+    path('help/', views.flatpage,
+         {'url': '/help/'}, name='help'),
     path('purchases/', include('shopping_list.urls')),
     path('', include('recipes.urls')),
 ]

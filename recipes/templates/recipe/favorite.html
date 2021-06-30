@@ -8,18 +8,18 @@
 
 {% block header %}
   <h1 class="main__title">Избранное</h1>
-  {% include 'recipe/include/tags.html' with index=True %}
+  {% include 'recipe/includes/tags.html' with index=True %}
 {% endblock %}
 
 
 {% block content %}
   <div class="card-list">
     {% for recipe in page_obj %}
-      {% include 'recipe/include/recipe_card.html' %}
+      {% include 'recipe/includes/recipe_card.html' %}
     {% endfor %}
   </div>
 {% if page_obj.has_other_pages %}
-  {% include 'paginator.html' %}
+  {% include 'includes/paginator.html' %}
 {% endif %}
 {% endblock %}
 

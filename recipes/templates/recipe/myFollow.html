@@ -30,7 +30,7 @@
               </li>
             {% else %}
               {% for recipe in author.recipes.all %}
-                {% include 'recipe/include/my_follow_recipe_item.html' with recipe=recipe %}
+                {% include 'recipe/includes/my_follow_recipe_item.html' with recipe=recipe %}
               {% endfor %}
             {% endif %}
           </ul>
@@ -44,7 +44,7 @@
     {% endfor %}
   </div>
   {% if page_obj.has_other_pages %}
-    {% include 'paginator.html' %}
+    {% include 'includes/paginator.html' %}
   {% endif %}
 {% endblock %}
 

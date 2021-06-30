@@ -9,11 +9,10 @@
 
 {% block header %}
   <h1 class="main__title">{{ author.first_name }}</h1>
-  {% include 'recipe/include/tags.html' %}
+  {% include 'recipe/includes/tags.html' %}
 {% endblock %}
 
 {% block content %}
-<!--        <p style="padding: 0 0 2em 0;"><a class="button button_style_light-blue" href="#">Подписаться на автора</a></p>-->
   <div class="author-subscribe" data-author="{{ author.id }}">
     <p style="padding: 0 0 2em 0;">
       {% if user.is_authenticated and user != author %}
@@ -31,11 +30,11 @@
   </div>
   <div class="card-list" >
     {% for recipe in page_obj %}
-      {% include 'recipe/include/recipe_card.html' %}
+      {% include 'recipe/includes/recipe_card.html' %}
     {% endfor %}
   </div>
   {% if page_obj.has_other_pages %}
-    {% include 'paginator.html' %}
+    {% include 'includes/paginator.html' %}
   {% endif %}
 {% endblock %}
 
