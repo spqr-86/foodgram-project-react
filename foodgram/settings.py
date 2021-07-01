@@ -10,7 +10,12 @@ SECRET_KEY = '$w4ckwywigve3az^@!=7y91c-kv3h+j&++8+%bb4m*dkg_)w(x'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "[::1]",
+    "testserver",
+]
 
 INSTALLED_APPS = [
     'recipes',

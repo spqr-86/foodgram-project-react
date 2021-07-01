@@ -12,7 +12,7 @@ def get_filter_values(get_params):
 def get_filter_link(get_params, tag):
     tags: list = get_params.getlist("tags")
     if tag.slug in tags:
-        tags.remove(tag.slug)
+        tags = [item for item in tags if item != tag.slug]
     else:
         tags.append(tag.slug)
 

@@ -45,7 +45,7 @@ class SubscribeDeleteViewSet(APIView):
 
     def delete(self, request, author_id):
         follow = Follow.objects.filter(user=request.user, author=author_id)
-        if follow:
+        if follow.exists():
             follow.delete()
             return SUCCESS_RESPONSE
         return BAD_RESPONSE
@@ -57,7 +57,7 @@ class FavoriteDeleteViewSet(APIView):
     def delete(self, request, recipe_id):
         favorite = Favorite.objects.filter(
             user=request.user, recipe=recipe_id)
-        if favorite:
+        if favorite.exists():
             favorite.delete()
             return SUCCESS_RESPONSE
         return BAD_RESPONSE

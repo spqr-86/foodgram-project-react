@@ -7,11 +7,10 @@
 {% block content %}
 
   <div class="custom-center-block">
+    <h1 align=center>{% block center_header %}{% endblock %}</h1>
     <p class="custom-text-block">{% block text %}{% endblock %}</p>
     <div class="custom-button-block">
-      <a href="{% url 'index' %}">
-        <button class="button button_style_blue">Перейти на главную</button>
-      </a>
+      <a href="{% url 'index' %}">Перейти на главную</a>
     </div>
   </div>
 
