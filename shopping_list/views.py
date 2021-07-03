@@ -1,5 +1,4 @@
 import weasyprint
-
 from django.conf import settings
 from django.db.models import Sum
 from django.http import HttpResponse
@@ -8,6 +7,7 @@ from django.views.generic import ListView
 
 from recipes.mixins import SectionMixin
 from recipes.models import Recipe, RecipeIngredient
+
 from .mixins import ShopList, ShopListMixin
 
 

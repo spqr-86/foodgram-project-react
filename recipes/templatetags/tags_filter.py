@@ -15,15 +15,10 @@ def get_filter_link(get_params, tag):
         tags = [item for item in tags if item != tag.slug]
     else:
         tags.append(tag.slug)
-
-    if tags:
-        result = "tags=" + "&tags=".join(tags)
-        return result
+    return "tags=" + "&tags=".join(tags)
 
 
 @register.filter
 def get_tags(get_params):
     tags = get_params.getlist("tags")
-    if tags:
-        result = "tags=" + "&tags=".join(tags)
-        return result
+    return "tags=" + "&tags=".join(tags)
