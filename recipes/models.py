@@ -112,11 +112,10 @@ class RecipeIngredient(models.Model):
         ]
 
     def __str__(self):
-        name = (
+        return (
             f"{self.ingredient.name} - {self.amount} "
             f"{self.ingredient.unit}"
         )
-        return name
 
 
 class Follow(models.Model):

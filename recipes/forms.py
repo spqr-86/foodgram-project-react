@@ -57,12 +57,11 @@ class RecipeForm(forms.ModelForm):
 
     def get_ingredients(self, query_data):
         """Возвращает список с названием ингредиентов."""
-        ingredients = [
+        return [
             query_data[key]
             for key in query_data.keys()
             if key.startswith('nameIngredient')
         ]
-        return ingredients
 
     def get_amount(self, q_dict):
         """Возвращает словарь ингредиент:количество."""

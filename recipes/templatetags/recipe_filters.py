@@ -10,14 +10,12 @@ def addclass(field, class_attr):
 
 @register.filter
 def is_favorite(recipe_id, user):
-    result = user.favorite.filter(recipe=recipe_id).exists()
-    return result
+    return user.favorite.filter(recipe=recipe_id).exists()
 
 
 @register.filter
 def has_follower(author_id, user):
-    result = user.follower.filter(author=author_id).exists()
-    return result
+    return user.follower.filter(author=author_id).exists()
 
 
 @register.filter

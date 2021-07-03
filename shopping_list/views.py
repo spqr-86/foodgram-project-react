@@ -1,12 +1,13 @@
 import weasyprint
+
 from django.conf import settings
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.generic import ListView
+
 from recipes.mixins import SectionMixin
 from recipes.models import Recipe, RecipeIngredient
-
 from .mixins import ShopList, ShopListMixin
 
 
@@ -17,8 +18,7 @@ class ShoppingListView(ShopListMixin, SectionMixin, ListView):
 
     def get_queryset(self):
         shop_list = ShopList(self.request)
-        queryset = Recipe.objects.filter(id__in=shop_list.shop_list)
-        return queryset
+        return Recipe.objects.filter(id__in=shop_list.shop_list)
 
 
 def get_pdf(request):
@@ -38,7 +38,8 @@ def get_pdf(request):
     weasyprint.HTML(string=html_string).write_pdf(
         response,
         stylesheets=[
-            weasyprint.CSS(str(settings.STATIC_ROOT) + '/shopping_list_pdf.css')
+            weasyprint.CSS(
+                str(settings.STATIC_ROOT) + '/shopping_list_pdf.css')
         ],
     )
     return response

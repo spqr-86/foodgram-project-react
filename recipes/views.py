@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
+
 from shopping_list.views import ShopListMixin
 
 from .forms import RecipeForm
@@ -31,9 +32,8 @@ class MyFollowView(ShopListMixin, SectionMixin, LoginRequiredMixin, ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        authors = User.objects.filter(
+        return User.objects.filter(
             following__user=self.request.user).prefetch_related('recipes')
-        return authors
 
 
 class RecipeDetail(DetailView):
@@ -51,7 +51,8 @@ class RecipeNew(ShopListMixin, SectionMixin, LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class RecipeUpdate(ShopListMixin, SectionMixin, LoginRequiredMixin, UpdateView):
+class RecipeUpdate(ShopListMixin, SectionMixin,
+                   LoginRequiredMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe/formRecipe.html'

@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
-from recipes.models import Favorite, Follow, Ingredient
+
 from rest_framework import filters, mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
+
+from recipes.models import Favorite, Follow, Ingredient
 from shopping_list.mixins import ShopList
 
 from .serializers import (FavoriteSerializer, IngredientSerializer,

@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 
-from recipes.models import Favorite, Follow, Ingredient, Recipe
-
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
+
+from recipes.models import Favorite, Follow, Ingredient, Recipe
 
 User = get_user_model()
 
