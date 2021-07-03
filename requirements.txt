@@ -39,3 +39,4 @@ wcwidth==0.1.9
 zipp==3.1.0
 python-dotenv~=0.15.0
 pillow==7.0.0
+weasyprint==52.5
