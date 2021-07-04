@@ -66,7 +66,7 @@ jobs:
           script: |
             cd foodgram-project
             sudo mv env .env
-            sudo docker pull {{ secrets.DOCKER_USERNAME }}/foodgram-project:latest
+            sudo docker pull {{ secrets.DOCKER_USERNAME }}/foodgram:latest
             sudo docker-compose up --force-recreate --no-deps -d web
             sudo docker image prune -f
   send_message:
