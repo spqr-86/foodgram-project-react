@@ -1,8 +1,9 @@
 FROM python:3.8.5
 
+COPY . /code
 WORKDIR /code
-RUN mkdir /var/html
 COPY requirements.txt .
+RUN mkdir /var/html
 RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
 COPY entrypoint.sh .
