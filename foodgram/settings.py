@@ -114,6 +114,8 @@ REST_FRAMEWORK = {
     )
 }
 
+LOGIN_URL = '/auth/login/'
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'index'

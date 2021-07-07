@@ -41,7 +41,7 @@ class RecipeDetail(ShopListMixin, DetailView):
     template_name = 'recipe/singlePage.html'
 
 
-class RecipeNew(ShopListMixin, SectionMixin, LoginRequiredMixin, CreateView):
+class RecipeNew(LoginRequiredMixin, ShopListMixin, SectionMixin, CreateView):
     form_class = RecipeForm
     template_name = 'recipe/formRecipe.html'
     success_url = reverse_lazy('index')
@@ -51,8 +51,7 @@ class RecipeNew(ShopListMixin, SectionMixin, LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class RecipeUpdate(ShopListMixin, SectionMixin,
-                   LoginRequiredMixin, UpdateView):
+class RecipeUpdate(LoginRequiredMixin, ShopListMixin, SectionMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe/formRecipe.html'
@@ -83,7 +82,8 @@ class AuthorView(ShopListMixin, SectionMixin, TagMixin, ListView):
         return context
 
 
-class FavoriteListView(ShopListMixin, SectionMixin, TagMixin, ListView):
+class FavoriteListView(LoginRequiredMixin, ShopListMixin, SectionMixin,
+                       TagMixin, ListView):
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'recipe/favorite.html'
