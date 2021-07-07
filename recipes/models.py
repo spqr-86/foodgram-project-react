@@ -97,7 +97,7 @@ class RecipeIngredient(models.Model):
     amount = models.DecimalField(
         max_digits=6,
         decimal_places=1,
-        validators=[MinValueValidator(1)],
+        validators=[MinValueValidator(0.0)],
         verbose_name='количество',
     )
 

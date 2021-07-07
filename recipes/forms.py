@@ -46,7 +46,7 @@ class RecipeForm(forms.ModelForm):
                 RecipeIngredient(
                     recipe=recipe_obj,
                     ingredient=ingredient,
-                    amount=ingredients_amount[ingredient.name],
+                    amount=float(ingredients_amount[ingredient.name]),
                 )
                 for ingredient in self.cleaned_data['ingredients']
             ],
