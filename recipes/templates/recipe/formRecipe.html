@@ -73,7 +73,7 @@
                   <span>{{ ingredient.ingredient.name }} {{ ingredient.amount }}{{ ingredient.ingredient.unit }}.</span>
                   <span class="form__field-item-delete"></span>
                   <input id="nameIngredient_{{ ingredient.ingredient.id }}" name="nameIngredient_{{ ingredient.ingredient.id }}" type="hidden" value="{{ ingredient.ingredient.name }}">
-                  <input id="valueIngredient_{{ ingredient.ingredient.id }}" name="valueIngredient_{{ ingredient.ingredient.id }}" type="hidden" value="{{ ingredient.amount }}" min="0.0">
+                  <input id="valueIngredient_{{ ingredient.ingredient.id }}" name="valueIngredient_{{ ingredient.ingredient.id }}" type="hidden" value="{{ ingredient.amount }}">
                   <input id="unitsIngredient_{{ ingredient.ingredient.id }}" name="unitsIngredient_{{ ingredient.ingredient.id }}" type="hidden" value="{{ ingredient.ingredient.unit }}">
                 </div>
               {% endfor %}
