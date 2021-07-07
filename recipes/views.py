@@ -51,7 +51,8 @@ class RecipeNew(LoginRequiredMixin, ShopListMixin, SectionMixin, CreateView):
         return super().form_valid(form)
 
 
-class RecipeUpdate(LoginRequiredMixin, ShopListMixin, SectionMixin, UpdateView):
+class RecipeUpdate(LoginRequiredMixin, ShopListMixin,
+                   SectionMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe/formRecipe.html'
