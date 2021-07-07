@@ -26,7 +26,7 @@ class IndexView(ShopListMixin, SectionMixin, TagMixin, ListView):
         return queryset.filter(tags__slug__in=tags).distinct()
 
 
-class MyFollowView(ShopListMixin, SectionMixin, LoginRequiredMixin, ListView):
+class MyFollowView(LoginRequiredMixin, ShopListMixin, SectionMixin, ListView):
     model = User
     template_name = 'recipe/myFollow.html'
     paginate_by = 6
