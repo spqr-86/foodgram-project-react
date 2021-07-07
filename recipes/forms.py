@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from .models import Ingredient, Recipe, RecipeIngredient
 
@@ -40,18 +41,19 @@ class RecipeForm(forms.ModelForm):
 
         ingredients_amount = self.amount
         recipe_obj.ingredients_amounts.all().delete()
+        recipe_ingredients = []
+        for ingredient in self.cleaned_data['ingredients']:
+            try:
+                recipe_ingredients.append(
+                    RecipeIngredient(
+                        recipe=recipe_obj,
+                        ingredient=ingredient,
+                        amount=float(ingredients_amount[ingredient.name]),
+                    ).clean_fields())
+            except ValidationError:
+                raise ValidationError('ERROR')
 
-        recipe_obj.ingredients_amounts.set(
-            [
-                RecipeIngredient(
-                    recipe=recipe_obj,
-                    ingredient=ingredient,
-                    amount=float(ingredients_amount[ingredient.name]),
-                )
-                for ingredient in self.cleaned_data['ingredients']
-            ],
-            bulk=False,
-        )
+        recipe_obj.ingredients_amounts.set(recipe_ingredients)
         self.save_m2m()
         return recipe_obj
 
