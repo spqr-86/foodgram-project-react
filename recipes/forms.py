@@ -43,7 +43,7 @@ class RecipeForm(forms.ModelForm):
 
         recipe_obj.ingredients_amounts.set(
             [
-                RecipeIngredient.objects.create(
+                RecipeIngredient(
                     recipe=recipe_obj,
                     ingredient=ingredient,
                     amount=float(ingredients_amount[ingredient.name]),
