@@ -15,23 +15,23 @@
           <span class="badge badge_style_blue nav__badge" id="counter">{{ purchases_count }}</span></li>
       </ul>
       <ul class="nav__items list">
-        <li class="nav__item">
+        <li class="nav__item {% if section == 'password_change' %}nav__item_active{% endif %}">
           <a href="{% url 'password_change' %}" class="nav__link link">Изменить пароль</a></li>
-        <li class="nav__item">
+        <li class="nav__item {% if section == 'logout' %}nav__item_active{% endif %}">
           <a href="{% url 'logout' %}" class="nav__link link">Выход</a></li>
       </ul>
     {% else %}
       <ul class="nav__items list">
-        <li class="nav__item nav__item_disabled">
+        <li class="nav__item nav__item_disabled {% if section == 'index' %}nav__item_active{% endif %}">
           <a href="{% url 'index' %}" class="nav__link link">Рецепты</a></li>
-        <li class="nav__item nav__item_disabled">
+        <li class="nav__item nav__item_disabled {% if section == 'purchases' %}nav__item_active{% endif %}">
           <a href="{% url 'purchases' %}" class="nav__link link">Список покупок</a></li>
           <span class="badge badge_style_blue nav__badge" id="counter">{{ purchases_count }}</span></li>
       </ul>
       <ul class="nav__items list">
-        <li class="nav__item">
+        <li class="nav__item {% if section == 'login' %}nav__item_active{% endif %}">
           <a href="{% url 'login'%}" class="nav__link link">Войти</a></li>
-        <li class="nav__item">
+        <li class="nav__item {% if section == 'signup' %}nav__item_active{% endif %}">
           <a href="{% url 'signup'%}"
             class="button button_style_blue">Создать аккаунт</a></li>
       </ul>

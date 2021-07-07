@@ -36,7 +36,7 @@ class MyFollowView(ShopListMixin, SectionMixin, LoginRequiredMixin, ListView):
             following__user=self.request.user).prefetch_related('recipes')
 
 
-class RecipeDetail(DetailView):
+class RecipeDetail(ShopListMixin, DetailView):
     model = Recipe
     template_name = 'recipe/singlePage.html'
 
