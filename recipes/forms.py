@@ -47,7 +47,7 @@ class RecipeForm(forms.ModelForm):
                     recipe=recipe_obj,
                     ingredient=ingredient,
                     amount=float(ingredients_amount[ingredient.name]),
-                ).is
+                )
                 for ingredient in self.cleaned_data['ingredients']
             ],
             bulk=False,
