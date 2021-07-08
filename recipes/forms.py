@@ -6,7 +6,7 @@ from .models import Ingredient, Recipe, RecipeIngredient
 
 class RecipeForm(forms.ModelForm):
     ingredients = forms.ModelMultipleChoiceField(
-        queryset=Ingredient.objects.all(), to_field_name='name'
+        queryset=Ingredient.objects.all(), to_field_name='name',
     )
 
     class Meta:
@@ -43,17 +43,20 @@ class RecipeForm(forms.ModelForm):
         recipe_obj.ingredients_amounts.all().delete()
         recipe_ingredients = []
         for ingredient in self.cleaned_data['ingredients']:
+            recipe_ingredient = RecipeIngredient(
+                recipe=recipe_obj,
+                ingredient=ingredient,
+                amount=ingredients_amount[ingredient.name]
+            )
             try:
-                recipe_ingredients.append(
-                    RecipeIngredient(
-                        recipe=recipe_obj,
-                        ingredient=ingredient,
-                        amount=float(ingredients_amount[ingredient.name]),
-                    ).clean_fields())
-            except ValidationError:
-                raise ValidationError('ERROR')
-
-        recipe_obj.ingredients_amounts.set(recipe_ingredients)
+                recipe_ingredient.full_clean()
+            except ValidationError as e:
+                raise forms.ValidationError(e)
+            recipe_ingredients.append(recipe_ingredient)
+        recipe_obj.ingredients_amounts.set(
+            recipe_ingredients,
+            bulk=False,
+        )
         self.save_m2m()
         return recipe_obj
 
