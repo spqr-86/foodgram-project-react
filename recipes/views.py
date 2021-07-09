@@ -92,4 +92,5 @@ class FavoriteListView(LoginRequiredMixin, ShopListMixin, SectionMixin,
 
     def get_queryset(self):
         user = self.request.user
-        return Recipe.objects.filter(favorite__user=user)
+        tags = self.get_tags()
+        return Recipe.objects.filter(favorite__user=user, tags__slug__in=tags)
