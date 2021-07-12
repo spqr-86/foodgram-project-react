@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import ValidationError
 
 from .models import Ingredient, Recipe, RecipeIngredient
 
@@ -48,10 +47,6 @@ class RecipeForm(forms.ModelForm):
                 ingredient=ingredient,
                 amount=ingredients_amount[ingredient.name]
             )
-            try:
-                recipe_ingredient.full_clean()
-            except ValidationError as e:
-                raise forms.ValidationError(e)
             recipe_ingredients.append(recipe_ingredient)
         recipe_obj.ingredients_amounts.set(
             recipe_ingredients,
@@ -59,6 +54,13 @@ class RecipeForm(forms.ModelForm):
         )
         self.save_m2m()
         return recipe_obj
+
+    def clean_ingredients(self):
+        for ingredient in self.cleaned_data['ingredients']:
+            if int(self.amount[ingredient.name]) < 0:
+                raise forms.ValidationError(
+                    'Количество ингредиента не может быть отрицательным')
+        return self.cleaned_data['ingredients']
 
     def get_ingredients(self, query_data):
         """Возвращает список с названием ингредиентов."""
