@@ -20,7 +20,7 @@ password: passworduser
   ```docker-compose exec web python manage.py migrate --noinput```<br>
   ```docker-compose exec web python manage.py createsuperuser```<br>
   ```docker-compose exec web python manage.py collectstatic --no-input ```
-5. Теперь проект доступен по адресу http://127.0.0.1/.
+5. Теперь проект доступен по адресу http://178.154.208.254
 
 # Технологии
 * Python
