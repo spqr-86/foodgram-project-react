@@ -28,5 +28,5 @@ password: passworduser
 * Django REST
 * Docker
 
-#### Проект разработал:
+# Проект разработал:
 * [Петр Балдаев](https://github.com/spqr-86)
