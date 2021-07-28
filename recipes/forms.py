@@ -57,7 +57,7 @@ class RecipeForm(forms.ModelForm):
 
     def clean_ingredients(self):
         for ingredient in self.cleaned_data['ingredients']:
-            if int(self.amount[ingredient.name]) < 0:
+            if float(self.amount[ingredient.name]) < 0:
                 raise forms.ValidationError(
                     'Количество ингредиента не может быть отрицательным')
         return self.cleaned_data['ingredients']
