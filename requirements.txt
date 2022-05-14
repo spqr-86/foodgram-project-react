@@ -38,5 +38,5 @@ virtualenv-clone==0.5.4
 wcwidth==0.1.9
 zipp==3.1.0
 python-dotenv~=0.15.0
-pillow==7.0.0
+pillow==9.0.1
 weasyprint==52.5
