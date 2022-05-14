@@ -16,7 +16,7 @@ importlib-metadata==1.6.0
 iniconfig==1.1.1
 more-itertools==8.2.0
 packaging==20.3
-pipenv==2020.8.13
+pipenv==2022.1.8
 pluggy==0.13.1
 py==1.10.1
 pycosat==0.6.3
