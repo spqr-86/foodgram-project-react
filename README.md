@@ -1,6 +1,6 @@
 <h1 align="center">foodgram_project</h1>
 
-![](https:/appveyor/tests/:spqr/:foodgram-project-react)
+![](https://img.shields.io/appveyor/build/spqr-86/foodgram-project-react)
 
 # Описание сервиса
 Сайт Foodgram, «Продуктовый помощник». Cервис для публикации рецептов.<br> 
