@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![](https:https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
 # Описание сервиса
 Сайт Foodgram, «Продуктовый помощник». Cервис для публикации рецептов.<br> 
