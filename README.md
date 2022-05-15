@@ -1,5 +1,6 @@
 <h1 align="center">foodgram_project</h1>
 
+![CI](/symfony/i/stars/:projectUuid)<br>
 /symfony/i/stars/:projectUuid
 
 # Описание сервиса
