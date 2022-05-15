@@ -1,3 +1,4 @@
+<h1 align="center">foodgram_project</h1>
 # foodgram_project
 # Описание сервиса
 Сайт Foodgram, «Продуктовый помощник». Cервис для публикации рецептов.<br> 
