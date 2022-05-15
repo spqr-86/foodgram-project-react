@@ -1,6 +1,6 @@
 <h1 align="center">foodgram_project</h1>
 
-! stars (/symfony/i/stars/:projectUuid)
+![stars](/symfony/i/stars/:projectUuid)
 
 # Описание сервиса
 Сайт Foodgram, «Продуктовый помощник». Cервис для публикации рецептов.<br> 
