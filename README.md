@@ -1,4 +1,3 @@
-![7460935](https://user-images.githubusercontent.com/72413031/168472316-b83f9e00-7a97-4946-bef9-3e90c227e680.png)
 # foodgram_project
 # Описание сервиса
 Сайт Foodgram, «Продуктовый помощник». Cервис для публикации рецептов.<br> 
