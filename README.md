@@ -12,7 +12,7 @@
 необходимых для приготовления одного или нескольких выбранных блюд.
 
 # Сайт
-http://178.154.208.254/
+http://petrbai5.beget.tech
 
 user: user  
 password: passworduser
