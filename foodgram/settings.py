@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['petrbai5.beget.tech/']
+ALLOWED_HOSTS = ['petrbai5.beget.tech']
 
 INSTALLED_APPS = [
     'recipes',
