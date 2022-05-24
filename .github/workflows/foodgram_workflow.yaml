@@ -53,7 +53,6 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          port: 22
           stack_file_name: docker-compose.yaml
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram:latest
