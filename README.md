@@ -14,11 +14,11 @@
 # Сайт
 http://petrbai5.beget.tech
 
-# Документация API
-http://petrbai5.beget.tech/api/redoc
-
 user: user  
 password: passworduser
+
+# Документация API
+http://petrbai5.beget.tech/api/redoc
 
 # Установка
 1. Клонируйте репрозиторий ```https://github.com/spqr-86/foodgram-project-react```
