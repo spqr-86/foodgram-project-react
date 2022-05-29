@@ -12,10 +12,10 @@
 необходимых для приготовления одного или нескольких выбранных блюд.
 
 # Сайт
-http://petrbai5.beget.tech/api/redoc/
+http://petrbai5.beget.tech
 
 # Документация API
-http://petrbai5.beget.tech
+http://petrbai5.beget.tech/api/redoc
 
 user: user  
 password: passworduser
